@@ -4,9 +4,21 @@ Quick and dirty script to download all games, for all operating
 systems, from [Humble Trove](https://www.humblebundle.com/monthly/trove). You
 need a Humble Monthly subscription to download these games.
 
+Forked from [Slashbunny](https://github.com/Slashbunny/humble-trove-downloader)'s excellent initial work; looking at the more "popular"
+Humble Trove downloaders made me think I'd have to write mine from scratch, until
+I found this clean but full-featured one. (Honorable mention goes to the one by
+[darktohka](https://github.com/darktohka/HumbleTrove) -- initially I felt that was a bit too OO for this task, but the more
+I looked at it the more it grew on me.)  Not that more than ten people will end
+up seeing this anyway, but credit where credit's due. I thought about making a PR
+for my changes, but they got to be rather expansive and I didn't have the good
+forethought to fork off features as I made them.  Most of the README below also
+comes from upstream, so while I'll eventually try to update the below as I go,
+the code is the final authority.
+
 Existing files have their md5 checksums checked versus what the Humble Bundle API
-reports. If there is a mismatch, you'll need to delete or move the offending
-file and run the script again.
+reports. If there is a mismatch, you'll be prompted to skip or overwrite the
+file in question. For unattended options, check the available option flags (-h
+for help).
 
 # Setup
 
@@ -75,7 +87,7 @@ use when excluding games from download using this tool.
 
 # Docker
 
-A docker image is available so you don't need to setup PHP or deal with
+Slashbunny's docker image is available so you don't need to setup PHP or deal with
 dependencies:
 
 ```bash
@@ -84,6 +96,9 @@ $ docker run -it \
     -u $(id -u):$(id -g) \
     slashbunny/humble-trove-downloader:latest /downloads "eyJ1GzZJE0oqwEaunyOYX3yrlkFUxPJq8PFWCgkKOHM00\075|1566665561|JR7m2nO769sO2Je4C2fE"
 ```
+The above will create the Docker instance with the upstream source; you can then
+attach to your local copy of the container and overwrite that with the download.php
+from this repo.
 
 # Help
 
