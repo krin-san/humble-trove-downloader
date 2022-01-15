@@ -183,7 +183,6 @@ foreach ($trove_data as $game) {
             [
                 'sink'     => $dl_path,
                 'progress' => function(
-                    $curl_resource,
                     $download_total,
                     $downloaded_bytes,
                     $upload_total,
